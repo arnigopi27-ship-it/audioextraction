@@ -5,3 +5,4 @@ openai-whisper
 google-generativeai
 pydub
 python-dotenv
+streamlit
