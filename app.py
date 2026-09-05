@@ -39,7 +39,10 @@ st.markdown('<p class="main-header">Audio Intelligence 🎙️</p>', unsafe_allo
 st.markdown('<p class="sub-header">Convert speech to text and extract key insights instantly using AI.</p>', unsafe_allow_html=True)
 
 # Load API Key (Try Streamlit secrets first, then environment variable)
-GEMINI_API_KEY = st.secrets.get("GEMINI_API_KEY", os.getenv("GEMINI_API_KEY"))
+try:
+    GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
+except Exception:
+    GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 if GEMINI_API_KEY:
     genai.configure(api_key=GEMINI_API_KEY)
